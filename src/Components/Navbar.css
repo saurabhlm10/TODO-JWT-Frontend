@@ -1,0 +1,17 @@
+#profile-link{
+    text-decoration: none;
+}
+
+#logout-icon{
+    color: #fff;
+    background-color: #1B98F5;
+    padding: 10px 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    text-decoration: none;
+    cursor: pointer;
+}
