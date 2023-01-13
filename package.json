@@ -39,5 +39,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": ""
+  "proxy": "https://saurabh-todo-jwt-backend.up.railway.app/"
 }

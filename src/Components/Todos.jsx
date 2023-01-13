@@ -16,15 +16,15 @@ const Todos = ({ todos, setTodos, searchTodos, setSearchTodos, user, setUser }) 
 
   const fetchTodos = async () => {
 
-  const token = cookies.get('jwt_token')
-  const userId = cookies.get('userId')
+    const token = cookies.get('jwt_token')
+    const userId = cookies.get('userId')
 
 
-  const config = {
-    headers:{
-      'token': token,
-    }
-  };
+    const config = {
+      headers: {
+        'token': token,
+      }
+    };
 
     const resp = await axios.get(`/api/gettodos/${userId}`, config)
 
@@ -32,6 +32,8 @@ const Todos = ({ todos, setTodos, searchTodos, setSearchTodos, user, setUser }) 
 
     if (data.length > 0) {
       setTodos(data)
+    } else{
+      setTodos([])
     }
   }
 
@@ -46,12 +48,12 @@ const Todos = ({ todos, setTodos, searchTodos, setSearchTodos, user, setUser }) 
   const sortByCreatedDate = () => {
     const tempTodos = [...todos]
 
-    if(sortCreatedAscending){
-      tempTodos.sort((a,b) => a.createdAt > b.createdAt ? -1 : 1)
-    } else{
-      tempTodos.sort((a,b) => a.createdAt > b.createdAt ? 1 : -1)
+    if (sortCreatedAscending) {
+      tempTodos.sort((a, b) => a.createdAt > b.createdAt ? -1 : 1)
+    } else {
+      tempTodos.sort((a, b) => a.createdAt > b.createdAt ? 1 : -1)
     }
-    
+
     setTodos(tempTodos)
     setsortCreatedAscending(!sortCreatedAscending)
   }
@@ -59,10 +61,10 @@ const Todos = ({ todos, setTodos, searchTodos, setSearchTodos, user, setUser }) 
   const sortByUpdatedDate = () => {
     const tempTodos = [...todos]
 
-    if(sortUpdatedAscending){
-      tempTodos.sort((a,b) => a.updatedAt > b.updatedAt ? -1 : 1)
-    } else{
-      tempTodos.sort((a,b) => a.updatedAt > b.updatedAt ? 1 : -1)
+    if (sortUpdatedAscending) {
+      tempTodos.sort((a, b) => a.updatedAt > b.updatedAt ? -1 : 1)
+    } else {
+      tempTodos.sort((a, b) => a.updatedAt > b.updatedAt ? 1 : -1)
     }
 
     setTodos(tempTodos)
@@ -77,25 +79,25 @@ const Todos = ({ todos, setTodos, searchTodos, setSearchTodos, user, setUser }) 
           <div className='sort-btn-container'>
 
             <button
-            className='sort-by-created-date'
-            onClick={sortByCreatedDate}
-            >Sort By Created Date: 
-            {sortCreatedAscending ? (
-              <> Oldest First</>
-            ) : (
-              <> Newest First</>
-            )}
+              className='sort-by-created-date'
+              onClick={sortByCreatedDate}
+            >Sort By Created Date:
+              {sortCreatedAscending ? (
+                <> Oldest First</>
+              ) : (
+                <> Newest First</>
+              )}
             </button>
 
             <button
-            onClick={sortByUpdatedDate}
-            className='sort-by-updated-date'
-            >Sort By Last Updated: 
-            {sortUpdatedAscending ? (
-              <> Oldest First</>
-            ) : (
-              <> Newest First</>
-            )}
+              onClick={sortByUpdatedDate}
+              className='sort-by-updated-date'
+            >Sort By Last Updated:
+              {sortUpdatedAscending ? (
+                <> Oldest First</>
+              ) : (
+                <> Newest First</>
+              )}
             </button>
           </div>
           {
