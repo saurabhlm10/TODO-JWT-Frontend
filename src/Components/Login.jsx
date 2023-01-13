@@ -24,7 +24,7 @@ const Login = ({ isLoggedIn, setIsLoggedIn, user, setUser }) => {
         }
 
         try {
-            const res = await axios.post('/auth/login', config)
+            const res = await axios.post('https://saurabh-todo-jwt-backend.up.railway.app//auth/login', config)
 
             const token = res.data.token
 
